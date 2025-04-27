@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: your-app-name
+    name: Laravel
     env: php
     buildCommand: composer install && npm ci && npm run build
     startCommand: php artisan serve --host 0.0.0.0 --port $PORT
@@ -12,7 +12,7 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
-        value: pgsql
+        value: mysql
       - key: DB_HOST
         fromDatabase:
           name: app-database
@@ -36,5 +36,6 @@ services:
 
 databases:
   - name: app-database
-    databaseName: your_database_name
-    user: your_database_user
+    type: mysql
+    databaseName: laravel  # ← Set your preferred database name
+    user: user 
